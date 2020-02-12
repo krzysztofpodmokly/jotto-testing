@@ -95,7 +95,7 @@ describe('"guessWord" action creator call', () => {
     wrapper.setState({ currentGuess: guessedWord });
 
     const submitButton = findByTestAttr(wrapper, 'submit-button');
-    submitButton.simulate('click');
+    submitButton.simulate('click', { preventDefault() {} });
   });
 
   test('calls "guessWord" when button is clicked', () => {
@@ -104,7 +104,6 @@ describe('"guessWord" action creator call', () => {
   });
 
   test('calls "guessWord" with input value as argument', () => {
-    console.log(guessWordMock.mock.calls);
     const guessWordArg = guessWordMock.mock.calls[0][0];
     expect(guessWordArg).toBe(guessedWord);
   });
